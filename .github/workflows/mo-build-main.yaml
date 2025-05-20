@@ -53,15 +53,3 @@ jobs:
             ${{ vars.MO_IMAGE_NAME__MAIN }}:latest
           build-args: |
             VERSION=${{ env.VERSION }}
-      - id: releaseWithMogenius-afebbf84a58939e82dfa
-        name: Release with mogenius
-        uses: mogenius/mogenius-release-action@v1
-        with:
-          dev: false
-          image: ${{ vars.MO_IMAGE_NAME__MAIN }}:${{ env.VERSION }}
-          kind: Deployment
-          namespace: discourse
-          resourceName: nginx
-          containerName: nginx
-          keyKind: ${{ vars.MO_API_KIND__MAIN }}
-          token: ${{ secrets.MO_API_TOKEN__afebbf84a58939e82dfa__MAIN }}
